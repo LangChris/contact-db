@@ -1,11 +1,22 @@
 package com.contact.db.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 public class SearchCriteria {
 
+	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private String firstName;
+	
+	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private String lastName;
+	
+	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private String email;
+	
+	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private String phone;
+	
+	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private Address address;
 	
 	public SearchCriteria() {}
