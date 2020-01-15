@@ -1,9 +1,10 @@
 # Contact Database
 
-This is a contact database where you can manage all your contacts.
+_This is a contact database where you can manage all your contacts._
 
 ## features:
-*  Includes some default fields
-*  Capability to add your own custom fields
-*  Capability to import your own set of contacts/fields from an exported excel spreadsheet or CSV file
-*  Includes a search functionality to filter out results by some search criteria using default fields
+
+*  `Includes some default fields`
+*  `Capability to add your own custom fields`
+*  `Capability to import your own set of contacts/fields from an exported excel spreadsheet or CSV file`
+*  `Includes a search functionality to filter out results by some search criteria using default fields`
