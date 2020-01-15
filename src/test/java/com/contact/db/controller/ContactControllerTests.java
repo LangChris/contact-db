@@ -124,9 +124,7 @@ public class ContactControllerTests {
 		Mockito
 		.when(contactService.filterResults(Mockito.any(), Mockito.any()))
 		.thenReturn(testFilteredContactList());
-		
-		System.out.println(new ObjectMapper().writeValueAsString(searchCriteria));
-		
+				
 		MvcResult result = mockMvc.perform(post(url)
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(new ObjectMapper().writeValueAsString(searchCriteria)))
