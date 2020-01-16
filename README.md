@@ -29,6 +29,7 @@ _This is a contact database where you can manage all your contacts._
 ### Create Contact 
 ```
 Creates a new contact given the contact info
+#### Url: "/v1/api/contact"
 
 ```
 ### Get All Contacts
