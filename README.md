@@ -58,6 +58,8 @@ Creates a new contact given the contact info
     "message": "You are not authorized to view the resource"
   }
   ```
+- - - -
+
 ### Get All Contacts
 Gets all contacts given the sortBy and direction
 - **URL** ```/v1/api/contacts```
@@ -119,6 +121,8 @@ Gets all contacts given the sortBy and direction
     "message": "You are not authorized to view the resource"
   }
   ```
+- - - -  
+  
 ### Search Contacts
 Filters the contacts given the sortBy, direction and search criteria
 - **URL** ```/v1/api/filtered-contacts```
@@ -189,6 +193,8 @@ Filters the contacts given the sortBy, direction and search criteria
     "message": "You are not authorized to view the resource"
   }
   ```
+- - - -
+
 ### Create Custom Field 
 Creates a new custom field given the name and type
 - **URL** ```/v1/api/custom-field```
@@ -213,6 +219,8 @@ Creates a new custom field given the name and type
     "message": "You are not authorized to view the resource"
   }
   ```
+- - - -  
+  
 ### Get All Custom Fields
 Displays all custom fields
 - **URL** ```/v1/api/custom-fields```
@@ -270,6 +278,8 @@ Displays all custom fields
     "message": "You are not authorized to view the resource"
   }
   ```
+- - - -
+
 ### Create Custom Data 
 Creates custom field data given the contactId, fieldId and value
 - **URL** ```/v1/api/custom-data```
@@ -295,6 +305,8 @@ Creates custom field data given the contactId, fieldId and value
     "message": "You are not authorized to view the resource"
   }
   ```
+- - - -
+
 ### Get Custom Data By Id
 Displays all custom field data given a contactId
 - **URL** ```/v1/api/custom-data/{id}```
