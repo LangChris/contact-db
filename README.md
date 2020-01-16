@@ -190,15 +190,86 @@ Filters the contacts given the sortBy, direction and search criteria
   }
   ```
 ### Create Custom Field 
-```
 Creates a new custom field given the name and type
-
+- **URL** ```/v1/api/custom-field```
+- **Method** ```POST``` 
+- **RequestBody** 
+```json
+{
+  "name": "age",
+  "type": "INT"
+}
 ```
+- **Success Response**
+  - **Code** ```201 Created```
+- **Error Response**
+  - **Code** ```401 Unauthorized```
+  - **Content**
+  ```json
+  {
+    "timestamp": 1502445801140,
+    "status": 401,
+    "error": "Unauthorized",
+    "message": "You are not authorized to view the resource"
+  }
+  ```
 ### Get All Custom Fields
-```
 Displays all custom fields
-
-```
+- **URL** ```/v1/api/custom-fields```
+- **Method** ```GET``` 
+- **Success Response**
+  - **Code** ```200 OK```
+  - **Content**
+  ```json
+  [
+    {
+      "name": "age",
+      "value": null,
+      "type": "INT"
+    },
+    {
+      "name": "occupation",
+      "value": null,
+      "type": "STRING"
+    },
+    {
+      "name": "birthday",
+      "value": null,
+      "type": "STRING"
+    },
+    {
+      "name": "chores_completed",
+      "value": "YES,NO",
+      "type": "STRING_LIST"
+    },
+    {
+      "name": "favorite_number",
+      "value": "1,2,3,4,5,6,7",
+      "type": "INT_LIST"
+    },
+    {
+      "name": "employer",
+      "value": null,
+      "type": "STRING"
+    },
+    {
+      "name": "language",
+      "value": null,
+      "type": "STRING"
+    }       
+  ]
+  ```
+- **Error Response**
+  - **Code** ```401 Unauthorized```
+  - **Content**
+  ```json
+  {
+    "timestamp": 1502445801140,
+    "status": 401,
+    "error": "Unauthorized",
+    "message": "You are not authorized to view the resource"
+  }
+  ```
 ### Create Custom Data 
 ```
 Creates Custom Field Data given the contactId, fieldId and value
