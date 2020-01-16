@@ -271,14 +271,15 @@ Displays all custom fields
   }
   ```
 ### Create Custom Data 
-Creates Custom Field Data given the contactId, fieldId and value
+Creates custom field data given the contactId, fieldId and value
 - **URL** ```/v1/api/custom-data```
 - **Method** ```POST``` 
 - **RequestBody** 
 ```json
 {
-  "name": "age",
-  "type": "INT"
+  "contactId": 12,
+  "fieldId": 1,
+  "value": "01/12/1991"
 }
 ```
 - **Success Response**
