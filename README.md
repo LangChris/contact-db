@@ -59,10 +59,66 @@ Creates a new contact given the contact info
   }
   ```
 ### Get All Contacts
-```
 Gets all contacts given the sortBy and direction
-
-```
+- **URL** ```/v1/api/contacts```
+- **Method** ```GET``` 
+- **RequestParams** 
+  - **sortBy** ```String```
+    - Not Required
+  - **direction** ```String```
+    - Not Required
+  - **customFields** ```Boolean```
+    - Not Required
+- **Success Response**
+  - **Code** ```200 OK```
+  - **Content**
+  ```json
+  [
+    {
+      "address": {
+        "addressLine": "123 Main St.",
+        "city": "Fairfax",
+        "state": "Va",
+        "zip": 22033
+      },
+      "createdDate": "2020-01-16T14:49:09.996Z",
+      "customData": {
+        "age": 25,
+        "employer": "Google",
+        "title": "Software Developer"
+      },
+      "email": "Email@Address.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "phone": "7031231234"
+    },
+    {
+      "address": {
+        "addressLine": "123 Main St.",
+        "city": "Fairfax",
+        "state": "Va",
+        "zip": 22033
+      },
+      "createdDate": "2020-01-16T14:49:09.996Z",
+      "customData": {},
+      "email": "Email@Address.com",
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "phone": "7031231234"
+    }
+  ]
+  ```
+- **Error Response**
+  - **Code** ```401 Unauthorized```
+  - **Content**
+  ```json
+  {
+    "timestamp": 1502445801140,
+    "status": 401,
+    "error": "Unauthorized",
+    "message": "You are not authorized to view the resource"
+  }
+  ```
 ### Search Contacts
 ```
 Filters the contacts given the sortBy, direction and search criteria
