@@ -27,11 +27,37 @@ _This is a contact database where you can manage all your contacts._
 7. [Get Custom Data By Id](#get-custom-data-by-id)
 
 ### Create Contact 
-```
 Creates a new contact given the contact info
-#### Url: "/v1/api/contact"
-
+- **URL** ```/v1/api/contact```
+- **Method** ```POST``` 
+- **RequestBody** 
+```json
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "Email@Address.com",
+  "phone": "7031231234",
+  "address": {
+    "addressLine": "123 Main St.",
+    "city": "Fairfax",
+    "state": "VA",
+    "zip": 22033
+  }
+}
 ```
+- **Success Response**
+  - **Code** ```201 Created```
+- **Error Response**
+  - **Code** ```401 Unauthorized```
+  - **Content**
+  ```json
+  {
+    "timestamp": 1502445801140,
+    "status": 401,
+    "error": "Unauthorized",
+    "message": "You are not authorized to view the resource"
+  }
+  ```
 ### Get All Contacts
 ```
 Gets all contacts given the sortBy and direction
