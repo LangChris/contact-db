@@ -296,7 +296,34 @@ Creates custom field data given the contactId, fieldId and value
   }
   ```
 ### Get Custom Data By Id
-```
 Displays all custom field data given a contactId
-
-```
+- **URL** ```/v1/api/custom-data/{id}```
+- **Method** ```GET``` 
+- **URLParams**
+  - **id** ```Long```
+    - Required
+- **Success Response**
+  - **Code** ```200 OK```
+  - **Content**
+  ```json
+  {
+    "birthday": "07/18/1994",
+    "chores_completed": "NO",
+    "occupation": "Software Developer",
+    "favorite_number": 7,
+    "employer": "Octo Consulting Group",
+    "language": "English",
+    "age": 25
+  }
+  ```
+- **Error Response**
+  - **Code** ```401 Unauthorized```
+  - **Content**
+  ```json
+  {
+    "timestamp": 1502445801140,
+    "status": 401,
+    "error": "Unauthorized",
+    "message": "You are not authorized to view the resource"
+  }
+  ```
