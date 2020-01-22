@@ -5,6 +5,11 @@ table {
     padding: 25px 0;
 }
 
+.row {
+    background-color: #eee;
+    cursor: pointer;
+}
+
 .container {
     width: 90%;
     margin: 0 auto;

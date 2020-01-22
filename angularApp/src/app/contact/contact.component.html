@@ -14,13 +14,26 @@
             <th>Phone</th>
             <th>Address</th>
         </tr>
-        <tr>
+        <tr class="row">
             <td>{{ contact.firstName }} {{ contact.lastName }}</td>
             <td>{{ contact.email }}</td>
             <td>{{ contact.phone }}</td>
             <td>{{ contact.address.addressLine }} {{ contact.address.city }} {{ contact.address.state }} {{ contact.address.zip }}</td>
         </tr>
     </table>
+    <div *ngIf="customData.length > 0">
+        <p>Custom Fields:</p>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Value</th>
+            </tr>
+            <tr *ngFor="let item of customData" class="row">
+                <td>{{ item.name }}</td>
+                <td>{{ item.value }}</td>
+            </tr>
+        </table >
+    </div>
 
     <div *ngIf="!contact" class="error">Invalid COntact Id!</div>
 </div>

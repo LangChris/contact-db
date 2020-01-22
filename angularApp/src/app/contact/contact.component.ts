@@ -18,11 +18,12 @@ export class ContactComponent implements OnInit {
   contact: any;
   id: number;
   customFields = false;
+  customData = [];
 
   constructor(private api: ApiService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    let id;
+    let id: any;
     if(window.location.href.includes(';')) {
       id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1, window.location.href.indexOf(';'));
     } else {
@@ -37,7 +38,7 @@ export class ContactComponent implements OnInit {
   }
 
   public updateCustomFields() {
-    let id;
+    let id: any;
     if(window.location.href.includes(';')) {
       id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1, window.location.href.indexOf(';'));
     } else {
@@ -54,6 +55,17 @@ export class ContactComponent implements OnInit {
     this.api.getContact(id, customFields).subscribe(
       data => { 
         this.contact = data;
+        if(this.customFields) {
+          for( var i = 0; i < Object.keys(this.contact.customData).length; i++) {
+            this.customData.push(
+              {
+                name: Object.keys(this.contact.customData)[i],
+                value: Object.values(this.contact.customData)[i]
+              });
+          }
+        } else {
+          this.customData = [];
+        }
       },
       error => console.log(error)
     );
