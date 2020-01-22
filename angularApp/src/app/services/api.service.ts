@@ -4,21 +4,25 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 const baseUrl = "http://localhost:8080/v1/api";
 
 const endpoints = {
-    contact: {
-        get: "/contact/"
-    },
     contacts: {
-        create: "/contact",
-        all: "/contacts",
+        post: "/contact",
+        get: {
+            all: "/contacts",
+            id: "/contact/"
+        },
         search: "/filtered-contacts"
     },
     fields: {
-        create: "/custom-field",
-        all: "/custom-fields"
+        post: "/custom-field",
+        get: {
+            all: "/custom-fields"
+        }
     },
     data: {
-        create: "/custom-data",
-        get: "/custom-data/"
+        post: "/custom-data",
+        get: {
+            id: "/custom-data/"
+        }
     }
 };
 
@@ -33,7 +37,7 @@ export class ApiService {
             headers: new HttpHeaders({ 'content-type': 'application/json' })
         };
 
-        return this.http.post(baseUrl + endpoints.contacts.create, contact, httpOptions )
+        return this.http.post(baseUrl + endpoints.contacts.post, contact, httpOptions )
     }
 
     // Get All Contacts Given Parameters (sortBy, direction, customFields)
@@ -46,7 +50,7 @@ export class ApiService {
         if(direction) { httpOptions.params = httpOptions.params.append('direction', direction) }
         if(customFields) { httpOptions.params = httpOptions.params.append('customFields', customFields.toString()) }
 
-        return this.http.get(baseUrl + endpoints.contacts.all, httpOptions )
+        return this.http.get(baseUrl + endpoints.contacts.get.all, httpOptions )
     }
 
     // Get All Contacts Given Parameters (sortBy, direction, customFields) and Search Criteria
@@ -72,7 +76,7 @@ export class ApiService {
 
         if(customFields) { httpOptions.params = httpOptions.params.append('customFields', customFields.toString()) }
 
-        return this.http.get(baseUrl + endpoints.contact.get + id, httpOptions )
+        return this.http.get(baseUrl + endpoints.contacts.get.id + id, httpOptions )
     }
 
     // Create A New Custom Field
@@ -81,7 +85,7 @@ export class ApiService {
             headers: new HttpHeaders({ 'content-type': 'application/json' })
         };
 
-        return this.http.post(baseUrl + endpoints.fields.create, field, httpOptions )
+        return this.http.post(baseUrl + endpoints.fields.post, field, httpOptions )
     }
 
     // Get All Custom Fields
@@ -90,7 +94,7 @@ export class ApiService {
             headers: new HttpHeaders({ 'content-type': 'application/json' })
         };
 
-        return this.http.get(baseUrl + endpoints.fields.all, httpOptions )
+        return this.http.get(baseUrl + endpoints.fields.get.all, httpOptions )
     }
 
     // Create A New Custom Field Data
@@ -99,7 +103,7 @@ export class ApiService {
             headers: new HttpHeaders({ 'content-type': 'application/json' })
         };
 
-        return this.http.post(baseUrl + endpoints.data.create, data, httpOptions )
+        return this.http.post(baseUrl + endpoints.data.post, data, httpOptions )
     }
 
     // Get Custom Field Data For A Certain Contact Id
@@ -108,6 +112,6 @@ export class ApiService {
             headers: new HttpHeaders({ 'content-type': 'application/json' })
         };
 
-        return this.http.get(baseUrl + endpoints.data.get + id, httpOptions )
+        return this.http.get(baseUrl + endpoints.data.get.id + id, httpOptions )
     }
 }

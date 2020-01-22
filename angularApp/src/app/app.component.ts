@@ -12,10 +12,11 @@ export class AppComponent {
     function toggleMore():void {
       let more = document.getElementById("more");
       more.addEventListener("click", (e:Event) => this.toggleMore());
-
-      toggleMore() {
-        console.log("more clicked..");
-      }
     }
   }
+
+  public toggleMore() {
+    console.log("more clicked..");
+  }
+  
 }

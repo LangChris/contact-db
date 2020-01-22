@@ -1,6 +1,7 @@
 <h1>{{ pageProperties.title }}</h1>
 <div class="section">
-    <p>Total Contacts: {{ contacts.length }}</p>
+    <p *ngIf="contacts">Total Contacts: {{ contacts.length }}</p>
+    <p *ngIf="!contacts">No Contacts</p>
 
     <table *ngIf="contacts">
         <tr>

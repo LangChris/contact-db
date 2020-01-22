@@ -29,12 +29,12 @@ button {
     content: "\002B";
 }
 
-.desc:before {
+.asc:before {
     content: "\25B2";
     cursor: pointer;
 }
 
-.asc:before {
+.desc:before {
     content: "\25BC";
     cursor: pointer;
 }

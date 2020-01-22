@@ -118,7 +118,14 @@ export class SearchComponent implements OnInit {
     let element = document.getElementById('first_name_sort');
     this.sortBy = sortBy;
     this.direction = this.direction == 'asc' ? 'desc' : 'asc';
-    element.classList.replace(this.direction == 'asc' ? 'asc' : 'desc', this.direction == 'asc' ? 'desc' : 'asc');
+    if(element.classList.contains('asc')) {
+      element.classList.remove('asc');
+      element.classList.add('desc');
+    } else if(element.classList.contains('desc')) {
+      element.classList.remove('desc');
+      element.classList.add('asc');
+    } 
+    
     this.router.navigate(['/search', { field: this.field, search: this.search, sortBy: this.sortBy, direction: this.direction, customFields: this.customFields}]);
    
     if(this.search != '') {
