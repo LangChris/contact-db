@@ -1,0 +1,15 @@
+<h1>{{ pageProperties.title }}</h1>
+<div class="section">
+    <p>{{ pageProperties.description }}</p>
+
+    <table *ngIf="fields">
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+        </tr>
+        <tr *ngFor="let item of fields">
+            <td>{{ item.name }}</td>
+            <td>{{ item.type }}</td>
+        </tr>
+    </table>
+</div>

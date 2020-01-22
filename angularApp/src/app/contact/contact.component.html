@@ -1,0 +1,26 @@
+<h1>{{ pageProperties.title }}</h1>
+<div class="section">
+    <p>{{ pageProperties.description }}</p>
+
+    <div class="container">
+      <input class="small" type="checkbox" id="customFields" name="customFields" (click)="updateCustomFields()" #customFields />
+      <label for="customFields">Include Custom Fields</label>
+    </div>
+
+    <table *ngIf="contact">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+        </tr>
+        <tr>
+            <td>{{ contact.firstName }} {{ contact.lastName }}</td>
+            <td>{{ contact.email }}</td>
+            <td>{{ contact.phone }}</td>
+            <td>{{ contact.address.addressLine }} {{ contact.address.city }} {{ contact.address.state }} {{ contact.address.zip }}</td>
+        </tr>
+    </table>
+
+    <div *ngIf="!contact" class="error">Invalid COntact Id!</div>
+</div>

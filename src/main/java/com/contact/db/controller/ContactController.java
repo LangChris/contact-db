@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +32,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value="/v1/api")
 @Api(value="Contact DB", description="Operations Pertaining to Contacts")
 public class ContactController {
@@ -90,6 +93,25 @@ public ResponseEntity<List<ContactDto>> getFilteredContacts(
 		contacts = contactService.filterResults(contactService.findAllDtos(sortBy, direction), searchCriteria);
 	}
 	return new ResponseEntity<List<ContactDto>>(contacts, HttpStatus.OK);
+}
+
+@ApiOperation(value="Get Contact by Id")
+@ApiResponses(value={
+		@ApiResponse(code=200, message="Successfully retrieved coontact"),
+		@ApiResponse(code=401, message=Constants.GENERIC_NOT_AUTHORIZED),
+		@ApiResponse(code=403, message=Constants.GENERIC_FORBIDDEN),
+		@ApiResponse(code=404, message=Constants.GENERIC_NOT_FOUND),
+		@ApiResponse(code=500, message=Constants.GENERIC_SERVER_ERROR)
+})
+@RequestMapping(value="/contact/{id}", method=RequestMethod.GET, produces="application/json")
+public ResponseEntity<ContactDto> getContact(
+		@PathVariable(value="id") Long id,
+		@RequestParam(required=false) boolean customFields) {
+	if(customFields) {
+		return new ResponseEntity<ContactDto>(contactService.findDtoWithCustomData(id), HttpStatus.OK);
+	} else {
+		return new ResponseEntity<ContactDto>(new ContactDto(contactService.findByContactId(id)), HttpStatus.OK);
+	}
 }
 
 @ApiOperation(value="Create Contact")

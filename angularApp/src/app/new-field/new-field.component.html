@@ -1,0 +1,20 @@
+<h1>{{ pageProperties.title }}</h1>
+<div class="section">
+    <p>{{ pageProperties.description }}</p>
+
+    <div class="input-container">
+        <input type="text" placeholder="Field Name" #name/>
+        <select #type>
+          <option *ngFor="let item of fieldTypes" value="{{ item.value }}">{{ item.name }}</option>
+        </select>
+        <input type="text" placeholder="Values" #value/>
+    </div>
+
+    <div class="button-container">
+        <button class="big" (click)="newField(name.value, type.value, value.value)">CREATE</button>
+        <button class="big" (click)="field = ''">CLEAR</button>
+    </div>
+
+    <div *ngIf="field == 'success'" class="success">Successfully Created Field!</div>
+    <div *ngIf="field == 'fail'" class="fail">Failed to Create Field!</div>
+</div>

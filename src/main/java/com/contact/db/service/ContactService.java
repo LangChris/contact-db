@@ -154,6 +154,38 @@ public class ContactService {
 		
 		return contactDtos;
 	}
+	
+	public ContactDto findDtoWithCustomData(Long id) {
+		
+			
+			List<CustomData> customFields = customFieldService.getCustomFieldsByContactId(id);
+
+			Map customData = new HashMap<>();
+			for(CustomData customField: customFields) {
+				String name = customFieldService.getFieldById(customField.getFieldId()).getName();
+				CustomFieldType type = customFieldService.getFieldById(customField.getFieldId()).getType();
+				
+				switch(type) {
+				case STRING: 
+				case STRING_LIST:
+					String stringVal = customField.getValue();
+					customData.put(name, stringVal);
+					break;
+				case INT:
+				case INT_LIST:
+					int intVal = Integer.parseInt(customField.getValue());
+					customData.put(name, intVal);
+					break;
+				case BOOLEAN:
+					boolean boolVal = Boolean.valueOf(customField.getValue());
+					customData.put(name, boolVal);
+					break;
+				default:	
+				}
+			}
+			
+		return new ContactDto(findByContactId(id), customData);
+	}
 
 	public List<ContactDto> filterResults(List<ContactDto> contacts, SearchCriteria searchCriteria) {
 		FILTERED_RESULTS = contacts;

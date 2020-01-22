@@ -1,0 +1,39 @@
+<h1>{{ pageProperties.title }}</h1>
+<div class="section">
+    <p>{{ pageProperties.description }}</p>
+
+    <div class="container">
+        <select id="field" #field>
+            <option *ngFor="let item of fields" value="{{ item.value }}">{{ item.name }}</option>
+        </select>
+        <select id="operand">
+            <option *ngFor="let item of operators" value="{{ item.value }}">{{ item.name }}</option>
+        </select>
+        <input type="text" id="search" #search/>
+    </div>
+
+    <div class="container">
+        <input class="small" type="checkbox" id="customFields" name="customFields" #customFields />
+        <label for="customFields">Include Custom Fields</label>
+    </div>
+
+    <div class="container">
+        <button class="big" (click)="navigateSearch(field.value, search.value, customFields.checked)">SEARCH</button>
+        <button class="big" (click)="clearSearch()">CLEAR</button>
+    </div>
+
+    <table *ngIf="searchData">
+        <tr>
+            <th>Name<span id="first_name_sort" class="asc" (click)="updateSort('first_name')"></span></th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+        </tr>
+        <tr *ngFor="let item of searchData; let i = index" class="row" (click)="navigateToContact(i)">
+            <td>{{ item.firstName }} {{ item.lastName }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.phone }}</td>
+            <td>{{ item.address.addressLine }} {{ item.address.city }} {{ item.address.state }} {{ item.address.zip }}</td>
+        </tr>
+    </table>
+</div>

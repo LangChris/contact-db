@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 public class ContactDto {
 
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -21,6 +22,7 @@ public class ContactDto {
 	public ContactDto() {}
 	
 	public ContactDto(Contact contact) {
+		this.id = contact.getContactId();
 		this.firstName = contact.getFirstName();
 		this.lastName = contact.getLastName();
 		this.email = contact.getEmail();
@@ -30,6 +32,7 @@ public class ContactDto {
 	}
 	
 	public ContactDto(Contact contact, Map customData) {
+		this.id = contact.getContactId();
 		this.firstName = contact.getFirstName();
 		this.lastName = contact.getLastName();
 		this.email = contact.getEmail();
@@ -37,6 +40,14 @@ public class ContactDto {
 		this.address = contact.getAddress();
 		this.createdDate = contact.getCreatedDate();
 		this.customData = customData;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -98,7 +109,8 @@ public class ContactDto {
 	@Override
 	public String toString() {
 		return String.format(
-				"ContactDto={firstName: %s, lastName: %s, email: %s, phone: %s, address: %s, createdDate: %s}", 
+				"ContactDto={id: %d, firstName: %s, lastName: %s, email: %s, phone: %s, address: %s, createdDate: %s}", 
+				this.id,
 				this.firstName,
 				this.lastName,
 				this.email,
