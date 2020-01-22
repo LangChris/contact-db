@@ -32,11 +32,13 @@ button {
 .asc:before {
     content: "\25B2";
     cursor: pointer;
+    font-size: 12px;
 }
 
 .desc:before {
     content: "\25BC";
     cursor: pointer;
+    font-size: 12px;
 }
 
 .minus:before {

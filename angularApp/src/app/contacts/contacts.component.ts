@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contacts',
@@ -16,7 +17,7 @@ export class ContactsComponent implements OnInit {
 
   contacts: any;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit() {
     this.getContacts("last_name", "asc", true);
@@ -29,5 +30,10 @@ export class ContactsComponent implements OnInit {
       },
       error => console.log(error)
     );
+  }
+
+  public navigateToContact(index: number) {
+    let contactId = this.contacts[index]['id'];
+    this.router.navigate(['/contact/' + contactId]);
   }
 }

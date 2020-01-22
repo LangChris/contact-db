@@ -79,6 +79,8 @@ export class SearchComponent implements OnInit {
   constructor(private api: ApiService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+
     (document.getElementById('operand') as HTMLSelectElement).disabled = true;
 
     let field = this.route.snapshot.paramMap.get('field');
@@ -93,9 +95,20 @@ export class SearchComponent implements OnInit {
     this.direction = direction ? direction : this.direction;
     this.customFields = customFields ? true : false;
 
+    (document.getElementById('search') as HTMLInputElement).value = this.search;
+    (document.getElementById('customFields') as HTMLInputElement).checked = this.customFields;
+
     if(this.search != '' && this.search != null) {
       this.searchContacts();
     }
+  }
+
+  public updateField(value: any) {
+    console.log('field changed to: ' + value);
+  }
+
+  public updateSearch(value: any) {
+    console.log('search changed to value: ' + value);
   }
 
   public navigateSearch(field: string, search: string, customFields: boolean) {
@@ -106,6 +119,8 @@ export class SearchComponent implements OnInit {
    
     if(this.search != '') {
       this.searchContacts();
+    } else {
+      this.searchData = null;
     }
   }
 

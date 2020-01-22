@@ -4,3 +4,8 @@ table {
     text-align: center;
     padding: 25px 0;
 }
+
+.row {
+    background-color: #eee;
+    cursor: pointer;
+}

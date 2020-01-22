@@ -6,10 +6,12 @@
         <tr>
             <th>Name</th>
             <th>Type</th>
+            <th>Values</th>
         </tr>
-        <tr *ngFor="let item of fields">
+        <tr *ngFor="let item of fields" class="row">
             <td>{{ item.name }}</td>
             <td>{{ item.type }}</td>
+            <td>{{ item.value }}</td>
         </tr>
     </table>
 </div>
