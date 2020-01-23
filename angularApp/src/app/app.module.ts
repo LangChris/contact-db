@@ -13,6 +13,10 @@ import { FieldsComponent } from './fields/fields.component';
 import { NewContactComponent } from './new-contact/new-contact.component';
 import { NewFieldComponent } from './new-field/new-field.component';
 import { ContactComponent } from './contact/contact.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { FooterComponent } from './footer/footer.component';
+import { VersionComponent } from './global/version/version.component';
+import { CopywriteComponent } from './global/copywrite/copywrite.component';
 
 const routes: Routes = [
   {
@@ -59,7 +63,11 @@ const routes: Routes = [
     FieldsComponent,
     NewContactComponent,
     NewFieldComponent,
-    ContactComponent
+    ContactComponent,
+    NavBarComponent,
+    FooterComponent,
+    VersionComponent,
+    CopywriteComponent
   ],
   imports: [
     HttpClientModule,

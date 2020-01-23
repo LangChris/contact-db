@@ -70,5 +70,5 @@ export class ContactComponent implements OnInit {
       error => console.log(error)
     );
   }
-
+  
 }
