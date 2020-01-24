@@ -34,7 +34,6 @@ Creates a new contact given the contact info
 - **RequestBody** 
 ```json
 {
-  "id": 1,
   "firstName": "John",
   "lastName": "Doe",
   "email": "doe@email.com",
@@ -44,8 +43,7 @@ Creates a new contact given the contact info
     "city": "Fairfax",
     "state": "Va",
     "zip": 22033
-  },
-  "createdDate": "2020-01-14T20:30:10.980+0000"
+  }
 }
 ```
 - **Success Response**
