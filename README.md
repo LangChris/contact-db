@@ -217,24 +217,24 @@ Gets a Contact given the contactId and optional customFields param
   - **Content**
   ```json
   {
-  "id": 1,
-  "firstName": "Chris",
-  "lastName": "Lang",
-  "email": "christopher.lang@octoconsulting.com",
-  "phone": "7032328168",
-  "address": {
-    "addressLine": "13100 Pavilion Ln",
-    "city": "Fairfax",
-    "state": "VA",
-    "zip": 22033
-  },
-  "createdDate": "2020-01-14T20:30:10.980+0000",
-  "customData": {
-    "employer": "Octo Consulting Group",
-    "title": "Software Engineer",
-    "age": 25
+    "id": 1,
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "doe@email.com",
+    "phone": "7031231234",
+    "address": {
+      "addressLine": "123 Main St.",
+      "city": "Fairfax",
+      "state": "Va",
+      "zip": 22033
+    },
+    "createdDate": "2020-01-14T20:30:10.980+0000",
+    "customData": {
+      "age": 25,
+      "employer": "Google",
+      "title": "Software Developer"
+    }
   }
-}
   ```
 - **Error Response**
   - **Code** ```401 Unauthorized```
