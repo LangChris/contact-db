@@ -57,6 +57,12 @@ table {
     cursor: pointer;
 }
 
+.no-results {
+    margin: 0 auto;
+    text-align: center;
+    padding: 50px 0;
+}
+
 @media screen and (max-width: 500px) {
     select, input, button {
         display: block;
