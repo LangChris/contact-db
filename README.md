@@ -8,12 +8,12 @@ _This is a contact database where you can manage all your contacts._
 - [x]  `Capability to add your own custom fields`
 - [x]  `Includes a search functionality to filter out results by some search criteria using default fields`
 - [x]  `Working back end API's`
+- [x]  `Presentable front end user interface`
 - - - -
 
 ## Upcoming Features:
 
 - [ ]  `Capability to import your own set of contacts/fields from an exported excel spreadsheet or CSV file`
-- [ ]  `Presentable front end user interface`
 - - - -
 
 ## API List:
@@ -21,10 +21,11 @@ _This is a contact database where you can manage all your contacts._
 1. [Create Contact](#create-contact)
 2. [Get All Contacts](#get-all-contacts)
 3. [Search Contacts](#search-contacts)
-4. [Create Custom Field](#create-custom-field)
-5. [Get All Custom Fields](#get-all-custom-fields)
-6. [Create Custom Data](#create-custom-data)
-7. [Get Custom Data By Id](#get-custom-data-by-id)
+4. [Get Contact By Id](#get-contact-by-id)
+5. [Create Custom Field](#create-custom-field)
+6. [Get All Custom Fields](#get-all-custom-fields)
+7. [Create Custom Data](#create-custom-data)
+8. [Get Custom Data By Id](#get-custom-data-by-id)
 
 ### Create Contact 
 Creates a new contact given the contact info
@@ -35,12 +36,12 @@ Creates a new contact given the contact info
 {
   "firstName": "John",
   "lastName": "Doe",
-  "email": "Email@Address.com",
+  "email": "doe@email.com",
   "phone": "7031231234",
   "address": {
     "addressLine": "123 Main St.",
     "city": "Fairfax",
-    "state": "VA",
+    "state": "Va",
     "zip": 22033
   }
 }
@@ -77,36 +78,38 @@ Gets all contacts given the sortBy and direction
   ```json
   [
     {
-      "address": {
+    "id": 1,
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "doe@email.com",
+    "phone": "7031231234",
+    "address": {
         "addressLine": "123 Main St.",
         "city": "Fairfax",
         "state": "Va",
         "zip": 22033
       },
-      "createdDate": "2020-01-16T14:49:09.996Z",
-      "customData": {
+    "createdDate": "2020-01-14T20:30:10.980+0000",
+    "customData": {
         "age": 25,
         "employer": "Google",
         "title": "Software Developer"
-      },
-      "email": "Email@Address.com",
-      "firstName": "John",
-      "lastName": "Doe",
-      "phone": "7031231234"
+      }
     },
     {
-      "address": {
-        "addressLine": "123 Main St.",
-        "city": "Fairfax",
-        "state": "Va",
-        "zip": 22033
-      },
-      "createdDate": "2020-01-16T14:49:09.996Z",
-      "customData": {},
-      "email": "Email@Address.com",
+      "id": 2,
       "firstName": "Jane",
       "lastName": "Doe",
-      "phone": "7031231234"
+      "email": "doe@email.com",
+      "phone": "7031231234",
+      "address": {
+          "addressLine": "123 Main St.",
+          "city": "Fairfax",
+          "state": "Va",
+          "zip": 22033
+        },
+      "createdDate": "2020-01-14T20:30:10.980+0000",
+      "customData": {}
     }
   ]
   ```
@@ -149,38 +152,87 @@ Filters the contacts given the sortBy, direction and search criteria
   ```json
   [
     {
-      "address": {
+    "id": 1,
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "doe@email.com",
+    "phone": "7031231234",
+    "address": {
         "addressLine": "123 Main St.",
         "city": "Fairfax",
         "state": "Va",
         "zip": 22033
       },
-      "createdDate": "2020-01-16T14:49:09.996Z",
-      "customData": {
+    "createdDate": "2020-01-14T20:30:10.980+0000",
+    "customData": {
         "age": 25,
         "employer": "Google",
         "title": "Software Developer"
-      },
-      "email": "Email@Address.com",
-      "firstName": "John",
-      "lastName": "Doe",
-      "phone": "7031231234"
+      }
     },
     {
-      "address": {
-        "addressLine": "123 Main St.",
-        "city": "Fairfax",
-        "state": "Va",
-        "zip": 22033
-      },
-      "createdDate": "2020-01-16T14:49:09.996Z",
-      "customData": {},
-      "email": "Email@Address.com",
+      "id": 2,
       "firstName": "Jane",
       "lastName": "Doe",
-      "phone": "7031231234"
+      "email": "doe@email.com",
+      "phone": "7031231234",
+      "address": {
+          "addressLine": "123 Main St.",
+          "city": "Fairfax",
+          "state": "Va",
+          "zip": 22033
+        },
+      "createdDate": "2020-01-14T20:30:10.980+0000",
+      "customData": {}
     }
   ]
+  ```
+- **Error Response**
+  - **Code** ```401 Unauthorized```
+  - **Content**
+  ```json
+  {
+    "timestamp": 1502445801140,
+    "status": 401,
+    "error": "Unauthorized",
+    "message": "You are not authorized to view the resource"
+  }
+  ```
+- - - -
+
+### Get Contact By Id
+Gets a Contact given the contactId and optional customFields param
+- **URL** ```/v1/api/contact/{id}```
+- **Method** ```GET``` 
+- **URLParams**
+  - **id** ```Long```
+    - Required
+- **RequestParams** 
+  - **customFields** ```Boolean```
+    - Not Required
+- **Success Response**
+  - **Code** ```200 OK```
+  - **Content**
+  ```json
+  {
+    "id": 1,
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "doe@email.com",
+    "phone": "7031231234",
+    "address": {
+      "addressLine": "123 Main St.",
+      "city": "Fairfax",
+      "state": "Va",
+      "zip": 22033
+    },
+    "createdDate": "2020-01-14T20:30:10.980+0000",
+    "customData": {
+      "age": 25,
+      "employer": "Google",
+      "title": "Software Developer"
+    }
+  }
   ```
 - **Error Response**
   - **Code** ```401 Unauthorized```
