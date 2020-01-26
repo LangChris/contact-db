@@ -76,7 +76,7 @@ export class SearchComponent implements OnInit {
   field = '';
   search = '';
 
-  constructor(private api: ApiService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private api: ApiService, private router: Router, public route: ActivatedRoute) { }
 
   ngOnInit() {
 

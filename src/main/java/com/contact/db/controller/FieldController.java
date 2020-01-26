@@ -29,7 +29,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://langchris.github.io")
 @RequestMapping(value="/v1/api")
 @Api(value="Custom Fields", description="Operations Pertaining to Custom Fields")
 public class FieldController {

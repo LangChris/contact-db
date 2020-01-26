@@ -32,7 +32,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://langchris.github.io")
 @RequestMapping(value="/v1/api")
 @Api(value="Contact DB", description="Operations Pertaining to Contacts")
 public class ContactController {

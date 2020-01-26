@@ -17,7 +17,7 @@ h1 {
     background-color: #4d4d4d;
 }
 
-.bar a {
+.bar a,span {
     display: inline-block;
     font-size: 30px;
     color: #bbb;
@@ -31,12 +31,18 @@ h1 {
     color: #4d4d4d;
 }
 
-.bar a:first-child {
+.bar span:hover {
+    background-color: #bbb;
+    color: #4d4d4d;
+    cursor: pointer;
+}
+
+.bar a {
     float: left;
     border-right: 1px solid #bbb;
 }
 
-.bar a:not(:first-child) {
+.bar span {
     float: right;
     border-left: 1px solid #bbb;
 }
@@ -78,7 +84,7 @@ h1 {
 }
 
 @media screen and (max-width: 500px) {
-    .bar a:not(:first-child) {
+    .bar span {
         display: none;
     }
 
