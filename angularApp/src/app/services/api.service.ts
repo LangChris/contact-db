@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
-const baseUrl = "http://100.15.218.131:8080/v1/api";
+const baseUrl = "https://09e491a6.ngrok.io/v1/api";
 
 const endpoints = {
     contacts: {
