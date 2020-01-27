@@ -30,3 +30,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Angular App 24-7contacts ###
+/24-7contacts/
